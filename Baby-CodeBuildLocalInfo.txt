@@ -1,0 +1,61 @@
+#
+# CodeBuild LOCAL installation instructions:
+# Both 'docker' and 'git' MUST be installed before you proceed!
+#
+# Clone the 'aws-codebuild-docker-images repository'
+#
+        git clone https://github.com/aws/aws-codebuild-docker-images.git
+        cd aws-codebuild-docker-images/ubuntu/standard/6.0
+#
+# Edit 'aws-codebuild-docker-images/ubuntu/standard/6.0/Dockerfile'
+# Use an editor of your choice to remove the last line which
+# contains ( ENTRYPOINT [“dockerd-entrypoint.sh”] ) and save the file.
+# Build a 5.7GB docker image in about 11 minutes:
+#
+        docker build -t aws/codebuild/standard:6.0 .
+#
+# Setup LOCAL CodeBuild agent using the LATEST version
+# NOTE - Subscribe for email notification when a version becomes available.
+#
+        docker pull \
+        amazon/aws-codebuild-local:latest --disable-content-trust=false
+#
+# There is NO need to do anything with script 'codebuild_build.sh'.
+# Some have advised replacing it but since the one provided works as it
+# should and already has appropriate permissions, it should not be touched.
+#
+# Details of build script execution:
+#
+# Execute a 'buildspec.yml' file.
+# Change ownership from root back to whoever executed this script.
+# This will require 'sudo' and appropriate permissions.
+# By default, root will own the output directory and its contents.
+# This gets annoying when a non-root user wants to access, modify or
+# delete the directory and/or its contents.
+# Clean up docker litter ( Stopped Containers )
+# Creating/Removing directory './TimeWaster'commands were included to
+# ensure that directory
+# 'aws-codebuild-docker-images/ubuntu/standard/6.0/local-builds'
+# gets a more recent datetime stamp than directory 
+# 'aws-codebuild-docker-images/ubuntu/standard/6.0/local-builds/output'
+#
+# Open a command shell.
+# Navigate to directory:
+# 'aws-codebuild-docker-images/ubuntu/standard/6.0/local-builds'.
+# Copy buildspec.yml file 'baby-buildspec.yml' to .
+# Copy/paste the commands between the asterisks into the command shell.
+# Find output artifacts in file:
+# 'aws-codebuild-docker-images/ubuntu/standard/6.0/local-builds/output/artifacts.zip'.
+#
+*****************************************************************
+
+(./codebuild_build.sh -b baby-buildspec.yml -i \
+aws/codebuild/standard:6.0 -a ./output; \
+sudo chown -vR $(id -u):$(id -u) ./output; \
+mkdir -p ./TimeWaster; rm -fr ./TimeWaster;  touch ./output; \
+docker system prune; mkdir -p ./TimeWaster; rm -fr ./TimeWaster)
+
+*****************************************************************
+#
+# EOF
+
