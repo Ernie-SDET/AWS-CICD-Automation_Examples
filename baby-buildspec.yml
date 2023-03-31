@@ -1,0 +1,75 @@
+version: 0.2
+#
+# YAML file 'baby-buildspec.yml' may be used:
+#
+# While learning how to run AWS CodeBuild on a Linux Workstation.
+# Both 'docker' and 'git' MUST be installed before you proceed!
+#
+# If you enjoy using almost complete and/or almost correct
+# examples, I invite you to consume as much time as your
+# frustration level will permit while using Google to obtain
+# information about using 'buildspec.yml' to execute
+# AWS CodeBuild on a Linux Workstation.
+#
+# If you just want to start with a simple working model that you
+# can embellish as needed, THIS is it.
+#
+# NOTE - Commands will NOT necessarily be executed in the order
+# in which they were coded.
+# NOTE - Multiline commands are demonstrated here to help avoid
+# PAIN later when they might actually be required.
+# NOTE - BOTH timestamped files will be included in the zipped
+# archive but NOT in the '.local-builds' directory upon
+# successful completion.
+# NOTE - Build will stop, if it encounters a non-zero exit code.
+# NOTE - Therefore a build was successful if ALL exit codes == 0.
+# NOTE - Don't panic, execution of post_build commands and
+# archive creation will occur even if a build session fails.
+#
+phases:
+  install:
+    runtime-versions:
+# Install a couple of runtimes to prove that we can
+      python: 3.10
+      java: corretto17
+    commands:
+      - echo "Another install command."
+      - echo "Yet another 01 install command."
+      - >
+        echo $(date +%Y:%m:%d:%H:%M:%S) >
+        ./StartTimeStamp-$(date +%Y:%m:%d:%H:%M:%S).txt
+      - echo "Yet another 02 install command."
+      - echo "Final install command."
+  pre_build:
+    commands:
+      - echo "Initial pre_build command."
+      - echo "Another pre_build command."
+      - echo "Yet another 01 pre_build command."
+      - echo "Final pre_build command."
+  build:
+    commands:
+      - echo "Initial build command."
+      - echo "Another build command."
+      - >
+        python --version ; pip show boto3; pip show pip;
+        echo "\nMultiline command includes this trailing echo command."
+      - echo "Final build command."
+  post_build:
+    commands:
+      - echo "Initial post_build command."
+      - echo "Another post_build command."
+# Potential GOTCHA '=' REQUIRED instead of '=='
+      - >
+        if [ "$CODEBUILD_BUILD_SUCCEEDING" = "1" ]; then
+          echo $(date +%Y:%m:%d:%H:%M:%S) > ./StopTimeStamp-$(date +%Y:%m:%d:%H:%M:%S).txt
+          echo "Build was SUCCESSFUL" | tee -a ./StopTimeStamp-$(date +%Y:%m:%d:%H:%M:%S).txt
+        else
+          echo $(date +%Y:%m:%d:%H:%M:%S) > ./BuildFailed-$(date +%Y:%m:%d:%H:%M:%S).txt
+          echo "Build FAILED, continuing with post_build and artifact creation" | tee -a ./BuildFailed-$(date +%Y:%m:%d:%H:%M:%S).txt
+        fi
+artifacts:
+  files:
+    - '**/*'
+  base-directory: './'
+  #
+  # EOF
