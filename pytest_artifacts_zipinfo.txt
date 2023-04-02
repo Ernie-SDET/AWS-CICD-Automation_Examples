@@ -1,0 +1,24 @@
+Archive:  pytest_artifacts.zip
+Zip file size: 48881 bytes, number of entries: 21
+-rw-r--r--  2.0 unx       41 bX defN 23-Apr-02 15:48 StopTimeStamp-2023:04:02:22:48:52.txt
+-rw-r--r--  2.0 unx     6133 bX defN 23-Apr-02 15:48 pytest_results-2023:04:02:22:48:52.txt
+-r--r--r--  2.0 unx     4325 bX defN 23-Apr-02 14:47 pytest-buildspec.yml
+-rw-r--r--  2.0 unx    13013 bX defN 23-Apr-02 15:48 __pycache__/pytest_example.cpython-310-pytest-7.2.2.pyc
+-rw-r--r--  2.0 unx     7213 bX defN 23-Apr-02 15:48 __pycache__/py_example.cpython-310.pyc
+-rw-r--r--  2.0 unx      191 bX defN 23-Apr-02 15:48 .pytest_cache/CACHEDIR.TAG
+-rw-r--r--  2.0 unx     1281 bX defN 23-Apr-02 15:48 .pytest_cache/v/cache/nodeids
+-rw-r--r--  2.0 unx    33270 bX defN 23-Apr-01 23:48 THIRD-PARTY.txt
+-rw-r--r--  2.0 unx    11358 bX defN 23-Apr-01 23:48 LICENSE.txt
+-r--r--r--  2.0 unx    18452 bX defN 23-Apr-01 22:12 Dockerfile_NEW
+-r--r--r--  2.0 unx     3727 bX defN 23-Apr-02 14:38 Pytest-CodeBuildLocalInfo.txt
+-rw-r--r--  2.0 unx        2 bX defN 23-Apr-02 15:48 .pytest_cache/v/cache/stepwise
+-r--r--r--  2.0 unx    17255 bX defN 23-Apr-02 15:26 pytest_example.py
+-rw-r--r--  2.0 unx     3084 bX defN 23-Apr-01 23:48 README.md
+-rw-r--r--  2.0 unx       20 bX defN 23-Apr-02 15:48 StartTimeStamp-2023:04:02:22:48:50.txt
+-rwxr-xr-x  2.0 unx     6480 bX defN 23-Apr-01 23:48 codebuild_build.sh
+-rw-r--r--  2.0 unx      302 bX defN 23-Apr-02 15:48 .pytest_cache/README.md
+-rw-r--r--  2.0 unx       37 bX defN 23-Apr-02 15:48 .pytest_cache/.gitignore
+-rw-r--r--  2.0 unx     1274 bX defN 23-Apr-02 15:48 py_example_results-2023:04:02:22:48:52.txt
+-r-xr-xr-x  2.0 unx    10378 bX defN 23-Mar-19 13:35 py_example.py
+-rw-r--r--  2.0 unx      100 bX defN 23-Apr-01 23:48 NOTICE.txt
+21 files, 137936 bytes uncompressed, 45477 bytes compressed:  67.0%
