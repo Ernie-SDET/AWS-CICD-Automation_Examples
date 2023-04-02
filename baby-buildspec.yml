@@ -21,10 +21,10 @@ version: 0.2
 # NOTE - BOTH timestamped files will be included in the zipped
 # archive but NOT in the '.local-builds' directory upon
 # successful completion.
-# NOTE - Build will stop, if it encounters a non-zero exit code.
-# NOTE - Therefore a build was successful if ALL exit codes == 0.
+# NOTE - Build MIGHT stop, if it encounters a non-zero exit code.
+# NOTE - A build was successful if ALL exit codes == 0.
 # NOTE - Don't panic, execution of post_build commands and
-# archive creation will occur even if a build session fails.
+# archive creation will USUALLY occur even if a build session fails.
 #
 phases:
   install:
