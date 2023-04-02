@@ -1,6 +1,19 @@
-#
-# CodeBuild LOCAL installation instructions:
+# CodeBuild 'barebones' LOCAL installation instructions:
 # Both 'docker' and 'git' MUST be installed before you proceed!
+#
+# NOTES:
+# 1. AWS documentation FAILS to mention that renaming of the 'artifacts.zip'
+# file is NOT possible during LOCAL 'buildspec.yml' execution. Current docs
+# explain how to rename when running solely in the Cloud.
+# 2. AWS documentation indicates ( after a build error ) post_build commands
+# will execute and an achive zip file will be produced. This is NOT always
+# the case during LOCAL 'buildspec.yml' execution. One of MANY ways to break
+# the build and get absolutely nothing as archived output is to execute
+# ( - pytest -vrP ) with or without an added parameter naming the python
+# file to be tested when 'pytest' was not installed via the Dockerfile when
+# the container was built.
+# 3. CodeBuild 'pytest' LOCAL installation instructions may be found in
+# file 'Pytest-CodeBuildLocalInfo.txt'.
 #
 # Clone the 'aws-codebuild-docker-images repository'
 #
