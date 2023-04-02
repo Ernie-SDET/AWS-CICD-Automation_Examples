@@ -1,7 +1,7 @@
 """
 This file, 'pytest_example.py', is used to test 'py_example.py' functions.
 'pytest_example.py' and 'py_example.py' must exist in same directory
-'python requests" must also be installed
+'python requests' must also be installed
 
 Invoke with verbosity via 'pytest -vrP'
 Invoke without verbosity via 'pytest'
